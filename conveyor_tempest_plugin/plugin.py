@@ -31,7 +31,16 @@ class ConveyorTempestPlugin(plugins.TempestPlugin):
         return full_test_dir, base_path
 
     def register_opts(self, conf):
-        pass
+        config.register_opt_group(conf,
+                                  config.service_available_group,
+                                  project_config.service_option)
+        config.register_opt_group(conf,
+                                  project_config.conveyor_group,
+                                  project_config.ConveyorGroup)
 
     def get_opt_lists(self):
-        pass
+        return [
+            (project_config.conveyor_group.name,
+             project_config.ConveyorGroup),
+            ('service_available', project_config.service_option)
+        ]
