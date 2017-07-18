@@ -15,10 +15,13 @@
 
 from oslo_config import cfg
 
-service_option = [
-    cfg.BoolOpt("conveyor_plugin",
+service_available_group = cfg.OptGroup(name="service_available",
+                                       title="Available OpenStack Services")
+
+ServiceAvailableGroup = [
+    cfg.BoolOpt("conveyor",
                 default=True,
-                help="Whether or not conveyor is expected to be available"),
+                help="Whether or not conveyor is expected to be available."),
 ]
 
 conveyor_group = cfg.OptGroup(name='conveyor',

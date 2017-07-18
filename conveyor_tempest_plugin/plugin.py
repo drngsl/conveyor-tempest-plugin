@@ -32,8 +32,8 @@ class ConveyorTempestPlugin(plugins.TempestPlugin):
 
     def register_opts(self, conf):
         config.register_opt_group(conf,
-                                  config.service_available_group,
-                                  project_config.service_option)
+                                  project_config.service_available_group,
+                                  project_config.ServiceAvailableGroup)
         config.register_opt_group(conf,
                                   project_config.conveyor_group,
                                   project_config.ConveyorGroup)
@@ -42,5 +42,6 @@ class ConveyorTempestPlugin(plugins.TempestPlugin):
         return [
             (project_config.conveyor_group.name,
              project_config.ConveyorGroup),
-            ('service_available', project_config.service_option)
+            (project_config.service_available_group.name,
+             project_config.ServiceAvailableGroup),
         ]
